@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<style>
+body {
+	color: gray;
+	background-color: black;
+}
+
+#parent
+{
+width: 98vw;
+height: 96vh;
+}
+
+#txt
+{
+	position: absolute;
+	top: 30%;
+	width: 99%;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	font-size: 80px;
+}
+</style>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  h = pad(h);
+  m = pad(m);
+  s = pad(s);
+  timeStr = h + ":" + m + ":" + s;
+  dateStr = (today.getMonth() +1) + "/" + today.getDate() + "/" + today.getFullYear();
+  document.getElementById('txt').innerHTML = timeStr + "</br></br>" + dateStr
+  document.title = timeStr;
+  today = null;
+  h = null;
+  m = null;
+  s = null;
+  var t = setTimeout(startTime, 500);
+}
+function pad(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+
+<div id="parent">
+<div id="txt"></div>
+</div>
+</body>
+</html>
